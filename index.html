@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Training Create</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid vh-100 d-flex flex-column">
+        <header class="bg-dark text-white p-2 d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">Football Training Create</h4>
+            <div>
+                <a href="#" class="btn btn-sm btn-outline-light" id="view-daily-preview">今日のセッションをプレビュー</a>
+            </div>
+        </header>
+        <div class="row flex-grow-1 g-0">
+            <!-- Left Column: Session List -->
+            <div class="col-lg-3 col-md-4 border-end d-flex flex-column">
+                <div class="p-2 border-bottom">
+                    <label for="plan-date" class="form-label">プランニング日</label>
+                    <input type="date" class="form-control" id="plan-date">
+                </div>
+                <div class="p-2 border-bottom">
+                    <button class="btn btn-primary w-100" id="add-session">+ 新規セッション</button>
+                </div>
+                <div class="list-group list-group-flush overflow-auto" id="session-list">
+                    <!-- Session items will be injected here -->
+                </div>
+            </div>
+
+            <!-- Center Column: Editor (Form + Canvas) -->
+            <div class="col-lg-9 col-md-8 d-flex flex-column p-3">
+                <div id="editor-area" class="flex-grow-1 flex-column d-none overflow-auto">
+                    <form id="training-form">
+                        <div class="mb-3">
+                            <label for="training-name-new" class="form-label">トレーニング名</label>
+                            <input type="text" class="form-control form-control-sm" id="training-name-new">
+                        </div>
+                        <div class="mb-3">
+                            <label for="training-time-new" class="form-label">時間</label>
+                            <input type="text" class="form-control form-control-sm" id="training-time-new" placeholder="例: 20分">
+                        </div>
+                        <div class="mb-3">
+                            <label for="training-objective-new" class="form-label">狙い</label>
+                            <textarea class="form-control form-control-sm" id="training-objective-new" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="training-description-new" class="form-label">説明</label>
+                            <textarea class="form-control form-control-sm" id="training-description-new" rows="3"></textarea>
+                        </div>
+                    </form>
+                    <div class="d-flex justify-content-start align-items-center mb-2">
+                        <small class="me-2">オブジェクト:</small>
+                        <button class="btn btn-success btn-sm me-1" id="save-session">セッションを保存</button>
+                        <button class="btn btn-secondary btn-sm me-1" id="add-player">選手</button>
+                        <button class="btn btn-secondary btn-sm me-1" id="add-ball">ボール</button>
+                        <button class="btn btn-secondary btn-sm me-1" id="add-cone">コーン</button>
+                        <button class="btn btn-secondary btn-sm me-1" id="add-marker">マーカー</button>
+                        <button class="btn btn-secondary btn-sm me-1" id="add-goal">ゴール</button>
+                        <button class="btn btn-secondary btn-sm me-1" id="add-line">ライン</button>
+                        <button class="btn btn-secondary btn-sm me-1" id="add-area">エリア</button>
+                        <button class="btn btn-secondary btn-sm me-1" id="add-text">テキスト</button>
+                        <input type="color" class="form-control form-control-sm form-control-color ms-3" id="object-color-picker" value="#0000ff" title="オブジェクトの色">
+                        <button class="btn btn-danger btn-sm ms-auto" id="delete-selected">選択削除</button>
+                    </div>
+                    <div class="canvas-container flex-grow-1">
+                        <canvas id="canvas"></canvas>
+                    </div>
+                </div>
+                 <div id="welcome-message" class="text-center p-5 my-auto">
+                    <h5>セッションが選択されていません</h5>
+                    <p>日付を選択し、「+ 新規セッション」からトレーニングを作成するか、既存のセッションを選択してください。</p>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

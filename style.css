@@ -1,0 +1,59 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling on the body */
+    font-size: 0.9rem;
+}
+
+.canvas-container {
+    position: relative;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+}
+
+#canvas {
+    /* The background image will be set via JavaScript */
+}
+
+#session-list .list-group-item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#session-list .list-group-item.active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+#session-list .session-actions button {
+    visibility: hidden; /* Hide by default */
+    margin-left: 5px;
+}
+
+#session-list .list-group-item:hover .session-actions button,
+#session-list .list-group-item.active .session-actions button {
+    visibility: visible; /* Show on hover or when active */
+}
+
+
+/* Ensure columns stretch to full height */
+.row.flex-grow-1 > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 50px); /* Adjust for header height */
+}
+
+#editor-area {
+    display: flex;
+    flex-direction: column;
+}
+
+#preview-area img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
